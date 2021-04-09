@@ -8,5 +8,4 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
 mybatis:
-  mapper-locations: classpath:com/example/demo/Dao/*.xml
-  type-aliases-package: com.example.demo.domain
+  mapper-locations: classpath:mybatis/*.xml

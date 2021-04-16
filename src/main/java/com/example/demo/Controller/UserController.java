@@ -15,7 +15,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -27,12 +27,14 @@ public class UserController {
     @ResponseBody
     @PostMapping("/search")
     public User searchById(@RequestBody User user) {
+        //log.error("Something else is wrong here");
         return userService.searchById(user.getId());
     }
 
     @ResponseBody
     @PostMapping("/searchall")
     public List<User> searchAll() {
+        log.error("Something else is wrong here");
         return userService.searchAll();
     }
 }

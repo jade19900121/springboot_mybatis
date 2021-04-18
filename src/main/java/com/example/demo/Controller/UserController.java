@@ -4,8 +4,9 @@ import com.example.demo.Dao.User;
 import com.example.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author fangjiulin
@@ -15,7 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserController.class);
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
 
@@ -27,14 +28,14 @@ public class UserController {
     @ResponseBody
     @PostMapping("/search")
     public User searchById(@RequestBody User user) {
-        //log.error("Something else is wrong here");
         return userService.searchById(user.getId());
     }
 
     @ResponseBody
     @PostMapping("/searchall")
     public List<User> searchAll() {
-        log.error("Something else is wrong here");
+        //log.error("error level");
+        log.info("程序现在进入到这里了，进行数据库查询");
         return userService.searchAll();
     }
 }

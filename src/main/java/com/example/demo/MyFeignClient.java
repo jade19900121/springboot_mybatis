@@ -12,6 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @FeignClient(name = "provider0")
 public interface MyFeignClient {
-    @RequestMapping(value = "user//hello")
+    @RequestMapping(value = "user/hello")
     public String hello();
 }

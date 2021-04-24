@@ -25,17 +25,19 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @ResponseBody
-    @PostMapping("/search")
+    //@ResponseBody
+    //@PostMapping("/search")
+    @RequestMapping("/search")
     public User searchById(@RequestBody User user) {
         return userService.searchById(user.getId());
     }
 
-    @ResponseBody
-    @PostMapping("/searchall")
+    //@ResponseBody
+    //@PostMapping("/searchall")
+    @RequestMapping("/searchall")
     public List<User> searchAll() {
         //log.error("error level");
-        log.info("程序现在进入到这里了，进行数据库查询");
+        //log.info("程序现在进入到这里了，进行数据库查询");
         return userService.searchAll();
     }
 }

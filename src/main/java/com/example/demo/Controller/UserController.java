@@ -38,4 +38,11 @@ public class UserController {
         log.info("程序现在进入到这里了，进行数据库查询");
         return userService.searchAll();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/hello",method = RequestMethod.GET)
+    public String test(){
+        return "这里是eruka的测试方法";
+    }
+
 }

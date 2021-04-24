@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ConsumerController {
     @Autowired
     MyFeignClient myFeignClient;
-    @RequestMapping("/searchall")
+    @RequestMapping("/user/hello")
     public String index() {
         return myFeignClient.hello();
     }

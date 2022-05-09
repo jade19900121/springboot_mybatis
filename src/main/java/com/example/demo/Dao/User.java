@@ -1,37 +1,25 @@
 package com.example.demo.Dao;
 
+import lombok.Data;
+
 /**
  * @author fangjiulin
  * @version 1.0
  * @date 2021/4/8 0008 上午 9:56
  */
+@Data
 public class User {
+    /**
+     * 主键id
+     */
     private int id;
+    /**
+     * 姓名
+     */
     private String name;
+    /**
+     * 年龄
+     */
     private int age;
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

@@ -11,7 +11,23 @@ import java.util.List;
  */
 @Component
 public interface UserDao {
+    /**
+     * 添加用户信息
+     * @param user
+     * @return
+     */
     int add(User user);
+
+    /**
+     * 根据id查询用户
+     * @param Id
+     * @return
+     */
     User searchById(int Id);
+
+    /**
+     * 查询所有用户信息
+     * @return
+     */
     List<User> searchAll();
 }

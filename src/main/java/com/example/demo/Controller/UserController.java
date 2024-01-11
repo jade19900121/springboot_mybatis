@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.ttl.TransmittableThreadLocal;
 import com.alibaba.ttl.threadpool.TtlExecutors;
 import com.example.demo.Dao.User;
-import com.example.demo.Service.UserService;
+import com.example.demo.api.UserService;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

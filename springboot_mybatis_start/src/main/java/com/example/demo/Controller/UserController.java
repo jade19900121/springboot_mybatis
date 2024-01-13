@@ -29,7 +29,7 @@ public class UserController {
     private static TransmittableThreadLocal<Integer> t2 = new TransmittableThreadLocal<>();
 
     @Autowired
-    private UserService userService;
+    private  UserService userService;
 
     @Autowired
     private ThreadPoolTaskExecutor threadPoolTaskExecutor;

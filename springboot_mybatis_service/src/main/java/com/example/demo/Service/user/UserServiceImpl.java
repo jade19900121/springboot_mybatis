@@ -1,7 +1,8 @@
-package com.example.demo.Service;
+package com.example.demo.Service.user;
 
 import com.example.demo.Dao.User;
 import com.example.demo.Dao.UserDao;
+import com.example.demo.api.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 
 @Service(value = "userService")
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;

@@ -2,6 +2,10 @@ package com.example.demo.Controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.Dao.User;
+import com.example.demo.Service.Thread.AddThread;
+import com.example.demo.Service.Thread.Counter;
+import com.example.demo.Service.Thread.DecThread;
+import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -63,5 +67,18 @@ public class ThreadController {
         System.out.println("线程执行结束");
     }
 
-
+    /**
+     * 线程同步,两个线程同时操作一个变量
+     */
+    @GetMapping("/test4")
+    public int test4() throws InterruptedException {
+        var add = new AddThread();
+        var dec = new DecThread();
+        add.start();
+        dec.start();
+        add.join();
+        dec.join();
+        System.out.println(Counter.count);
+        return Counter.count;
+    }
 }

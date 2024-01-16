@@ -36,10 +36,32 @@ public class ThreadController {
     @GetMapping("/test2")
     public void test2() {
         logger.info("通过thread创建线程");
-        Thread t = new Thread(() ->{
-            System.out.println(Thread.currentThread().getName() + "start new thread!");
+        Thread t = new Thread(() -> {
+            System.out.println("thread run...");
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+            }
+            System.out.println("thread end.");
+            //System.out.println(Thread.currentThread().getName() + "start new thread!");
         });
         t.start();
+        try {
+            System.out.println("main start...");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+        }
+        System.out.println("main end...");
     }
+
+    @GetMapping("/test3")
+    public void test3() throws InterruptedException {
+        Thread t = new MyThread();
+        System.out.println("start");
+        t.start();
+        t.join();
+        System.out.println("线程执行结束");
+    }
+
 
 }

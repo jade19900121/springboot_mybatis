@@ -17,7 +17,7 @@ public class Task1 implements Callable<String> {
     @Override
     public String call() throws Exception {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             return name;
         } catch (InterruptedException e) {
             return null;

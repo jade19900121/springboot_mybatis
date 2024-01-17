@@ -2,19 +2,17 @@ package com.example.demo.Controller;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.Dao.User;
-import com.example.demo.Service.Thread.AddThread;
-import com.example.demo.Service.Thread.Counter;
-import com.example.demo.Service.Thread.DecThread;
-import com.example.demo.Service.Thread.Task;
+import com.example.demo.Service.Thread.*;
 import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import javax.jws.soap.SOAPBinding;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 /**
  * @author fangjiulin
@@ -127,11 +125,22 @@ public class ThreadController {
     }
 
     /**
-     *
+     * 多线程有返回值
      */
     @GetMapping("/test8")
     public void test8() {
+        // 创建一个固定大小的线程池:
+        ExecutorService es = Executors.newCachedThreadPool();
 
+        List<Future<String>> list = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
+            Future<String> future = es.submit(new Task1("" + i));
+            list.add(future);
+        }
+        //判断多有线程是否结束
+
+        // 关闭线程池:
+        es.shutdown();
     }
 
 

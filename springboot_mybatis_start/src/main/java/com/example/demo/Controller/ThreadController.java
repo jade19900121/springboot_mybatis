@@ -5,10 +5,16 @@ import com.example.demo.Dao.User;
 import com.example.demo.Service.Thread.AddThread;
 import com.example.demo.Service.Thread.Counter;
 import com.example.demo.Service.Thread.DecThread;
+import com.example.demo.Service.Thread.Task;
 import lombok.var;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author fangjiulin
@@ -81,4 +87,52 @@ public class ThreadController {
         System.out.println(Counter.count);
         return Counter.count;
     }
+
+    /**
+     * 使用线程池,固定线程池大小
+     */
+    @GetMapping("/test5")
+    public void test5() {
+        // 创建一个固定大小的线程池:
+        ExecutorService es = Executors.newFixedThreadPool(3);
+        for (int i = 0; i < 6; i++) {
+            es.submit(new Task("" + i));
+        }
+        // 关闭线程池:
+        es.shutdown();
+    }
+
+    /**
+     * 使用线程池,动态调整线程池大小
+     */
+    @GetMapping("/test6")
+    public void test6() {
+        // 创建一个固定大小的线程池:
+        ExecutorService es = Executors.newCachedThreadPool();
+        for (int i = 0; i < 6; i++) {
+            es.submit(new Task("" + i));
+        }
+        // 关闭线程池:
+        es.shutdown();
+    }
+
+    /**
+     * 使用ScheduledThreadPool
+     */
+    @GetMapping("/test7")
+    public void test7() {
+        ScheduledExecutorService ses = Executors.newScheduledThreadPool(4);
+        //ses.schedule(new Task("one-time"), 1, TimeUnit.SECONDS);
+        ses.scheduleAtFixedRate(new Task("fixed-rate"), 2, 1, TimeUnit.SECONDS);
+    }
+
+    /**
+     *
+     */
+    @GetMapping("/test8")
+    public void test8() {
+
+    }
+
+
 }
